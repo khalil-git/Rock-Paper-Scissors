@@ -14,6 +14,19 @@ button{
     border:none;
     margin: 25px;
     width: 100px;
+    background-color: #ea721c;
+    color: #fff;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #fff;
+    color:  #ea721c;
+}
+.weapons{
+    width:60%;    
+    margin: 0 auto;
+    text-align: center;
+
 }
 .text-center{
     text-align: center;

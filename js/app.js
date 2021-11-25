@@ -18,7 +18,7 @@ function computerPlay(){
 function playerPlay()
 {
     const msg = `Choose P for Paper, R for Rock and S for Scissors`
-    let selection = window.prompt(msg, "").toLowerCase();
+    //let selection = window.prompt(msg, "").toLowerCase();
     switch(selection)
     {
         case "p":

@@ -1,40 +1,37 @@
 
 
 // Weapons Rock, PAper or Scissors
-let weapones = ["rock","paper","scissors"];
+const weapones = {ROCK:"rock", 
+                PAPER:"paper",
+                SCISSORS:"scissors"};
+
 // player score
 let playerScore = 0;
 //computer score
 let computerScore = 0;
+//round
+let roundNum = 0;
 
+//weapones objects
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissors = document.getElementById("scissors");
+const playerScoreTxt = document.querySelector("div.player-score").children[1];
+const computerScoreTxt = document.querySelector("div.computer-score").children[1];
 
 // computer play choose the weapon randomly
 function computerPlay(){
-    let selection = Math.floor(Math.random() * weapones.length);
-    return weapones[selection];
-}
-
-//player tern prompte plyer to choose weapon
-function playerPlay()
-{
-    //onst msg = `Choose P for Paper, R for Rock and S for Scissors`
-    let selection = window.prompt(msg, "").toLowerCase();
+    //weapons object length
+    const length = Object.keys(weapones).length;
+    //available weapons
+    const computerChoices = Object.keys(weapones);
+    //random index in weapons range
+    let idx = Math.floor(Math.random() * length);    
+    //select weapon randmly
+    const weapon = computerChoices[idx];
     
-    switch(selection)
-    {
-        case "p":
-          selection = "paper";
-          break;
-        case "r":
-          selection = "rock";
-          break;
-        case "s":  
-          selection = "scissors"
-          break;      
-    }     
-            
-    //return player selection  
-    return selection.toLowerCase();
+    //return weapon
+    return weapones[weapon];
 }
 
 function playRound(playerSelection, computerSelection) 
@@ -44,7 +41,7 @@ function playRound(playerSelection, computerSelection)
     //scissors beats papper
     let result = "";
     if (playerSelection === computerSelection){
-           result = "Tie"; 
+           result = "Tie";           
     }  
     else if(playerSelection == "rock")
     {
@@ -81,27 +78,64 @@ function playRound(playerSelection, computerSelection)
 
 
 
- function game()
- {
+function play(SelectedWeapon){
+    
+    
+    let winner = "";  
+    let playerSelection = "";
+    let computerSelection = "";
 
-    let winner = "";
-   // const playerSelection = document.getEllementByClassName("weapon button");
-    console.log(playerSelection)
+    //round numer
+    roundNum += 1;
+
+   
+    //Computer seletction Randomly
+    computerSelection = computerPlay();       
+    //player Selection 
+    playerSelection = SelectedWeapon;
+
+    winner = playRound(playerSelection,computerSelection);
+
+    console.log(`
+    Round : ${roundNum}
+    Player Select: ${playerSelection}
+    computer Select: ${computerSelection}
+    winner is: ${winner}`);            
+
+    updateScores();
+}
+
+function updateScores(){
+
+    playerScoreTxt.innerHTML = playerScore;
+    computerScoreTxt.innerHTML = computerScore;
+    
+}
+function game()
+{
+    //game status
+    let playRound = true;   
+
+    //player selection depending on choosen weapon
+    rock.addEventListener('click', function(){        
+        play(weapones.ROCK);        
+    });
+
+    paper.addEventListener('click',function(){
+        play(weapones.PAPER);        
+    });
+    scissors.addEventListener('click',function(){
+        play(weapones.SCISSORS);       
+    });   
+}
 
 
-    const computerSelection = computerPlay();
-    winner = playRound(playerSelection,computerSelection)
-
-    console.log(winner);
-
-    //reset scores
-    // playerScore = 0;
-    // computerScore = 0;
- }
 
 
-
+//Start the game
 game();
+
+
 
 
 

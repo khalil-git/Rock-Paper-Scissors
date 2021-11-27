@@ -12,7 +12,7 @@ body{
     margin: 0 auto;
 
 }*/
-.weapons button {
+#weapons button {
     padding: 5px;
     outline: none;
     border-radius: 5px;
@@ -24,11 +24,11 @@ body{
     color: #fff;
     cursor: pointer;
 }
-.weapons button:hover{
+#weapons button:hover{
     background-color: #fff;
     color:  #ea721c;
 }
-.weapons{
+#weapons{
     width:60%;    
     margin: 0 auto;
     text-align: center;

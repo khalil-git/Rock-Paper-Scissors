@@ -17,8 +17,9 @@ function computerPlay(){
 //player tern prompte plyer to choose weapon
 function playerPlay()
 {
-    const msg = `Choose P for Paper, R for Rock and S for Scissors`
-    //let selection = window.prompt(msg, "").toLowerCase();
+    //onst msg = `Choose P for Paper, R for Rock and S for Scissors`
+    let selection = window.prompt(msg, "").toLowerCase();
+    
     switch(selection)
     {
         case "p":
@@ -84,7 +85,10 @@ function playRound(playerSelection, computerSelection)
  {
 
     let winner = "";
-    const playerSelection = playerPlay();
+   // const playerSelection = document.getEllementByClassName("weapon button");
+    console.log(playerSelection)
+
+
     const computerSelection = computerPlay();
     winner = playRound(playerSelection,computerSelection)
 
